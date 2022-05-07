@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<title>Title</title>
+</head>
+<body>
+	
+	<div id='app'>
+		<app-header></app-header>
+		<app-contents></app-contents>
+		<app-footer></app-footer>
+	</div>
+	<div id='nothing'>
+		<app-footer>not working</app-footer>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		// 전역 컴포넌트 설정
+		Vue.component('app-header', {
+			template: '<h1>vue header</h1>'
+		});
+		Vue.component('app-contents', {
+			template: '' +
+				'<section>' +
+				'<div>' +
+					'<p>안녕하세요</p>' +
+					'<p>뷰 연습입니다. 🥰</p>' +
+				'</div>' +
+				'</section>'
+		})
+		
+		// id app 에서만 작동하는 지역 컴포넌트
+		new Vue({
+			el: '#app',
+			components: {
+				'app-footer': {
+					template: '<footer>vue footer</footer>'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

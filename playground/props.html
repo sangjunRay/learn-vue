@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<title>Title</title>
+</head>
+<body>
+	<div id='app'>
+		<app-header v-bind:propsdata='message'></app-header>
+		<app-contents  v-bind:contentdata='contentMessage'  v-bind:contenttoday='contentToday'></app-contents>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		let appHeader = {
+			template: '<h1>{{propsdata}}</h1>',
+			props: ['propsdata'],
+		}
+		
+		let appContent = {
+			template: '<p>{{contentdata}} {{contenttoday}}</p>',
+			props: ['contentdata', 'contenttoday'],
+		}
+		
+		new Vue({
+			el: '#app',
+			components: {
+				'app-header': appHeader,
+				'app-contents': appContent
+			},
+			data: {
+				message: 'its props hello vue 😄',
+				contentMessage: 'its props for contents! 🚀',
+				contentToday: `${new Date().toLocaleDateString()}`
+			}
+		})
+	</script>
+</body>
+</html>
